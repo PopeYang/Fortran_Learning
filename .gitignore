@@ -1,0 +1,57 @@
+# Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# Visual Studio 临时文件、缓存文件和日志文件
+.vs/
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Other files and folders that might not need to be tracked
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.idb
+*.svclog
+*.scc
+
+# For Fortran specific files
+*.mod
+*.o
+*.a
+*.so
+*.u2d
+
+# Exclude backup and lock files
+*.lock.json
+*.bak
+*.tmp
+
+# Exclude package manager folders
+packages/
+node_modules/
+bower_components/
+
+# Exclude any notes created during Visual Studio usage
+Notes/
+
+# Exclude any build folders that might be created
+build/
+Build/
+
+# Exclude any 'Thumbs.db' image files
+Thumbs.db
