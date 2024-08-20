@@ -1,4 +1,4 @@
-module LabelLoopModule
+module LabelLoopModule_Goto
     implicit none
     
 contains
@@ -6,7 +6,7 @@ contains
         integer :: i
 
         ! 使用带标签的DO循环遍历数字
-        do 200 i = 1, 10
+        do 200 i = 1, 50
             if (mod(i, 10) == 0) then
                 goto 300
             endif
@@ -25,8 +25,11 @@ contains
     300     continue
             write(*,*) 'i is a multiple of 10: ', i
     
-    200     continue  ! 这是编号为200的行，循环结束后会到达这里
+            ! 200 continue是循环的逻辑结构的一部分
+            ! 表示循环的开始
+            ! 控制流会根据循环条件在这里继续/结束循环
+    200     continue  
         
     end subroutine processLoop
     
-end module LabelLoopModule
+end module LabelLoopModule_Goto

@@ -1,5 +1,7 @@
 program main
-    use LabelLoopModule  ! use module
+    !use LabelLoopModule_Goto  ! use module
+    use LabelLoopModule_Re
+    
     implicit none
 
     ! call submodule
