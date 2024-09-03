@@ -1,24 +1,32 @@
-PROGRAM MAIN
-    USE LabelLoopModule_Goto  ! use module
+PROGRAM Main
+    USE ISO_FORTRAN_ENV, ONLY : REAL64
+    USE LabelLoopModule_Goto  ! Use modules for specific functionalities
     USE LabelLoopModule_Re
     USE TYPE_CONVERSION
-    USE beam_stiffness_matrix_module
 
     IMPLICIT NONE
 
-    ! Call submodule
-    
-    ! Label_Loop
-    ! CALL PROCESSLOOP 
-    ! WRITE(*,*) 'Loop completed.'
-    
-    ! Data_Type_Convert
-    ! CALL CONVERT_AND_DISPLAY
-    
-    double precision, allocatable, dimension(:,:) :: stiffness_matrix
-    ! 调用模块中的函数来计算刚度矩阵
-    stiffness_matrix = compute_stiffness_matrix()
-    print *, 'Stiffness matrix size: ', size(stiffness_matrix, 1), size(stiffness_matrix, 2)
-    call save_matrix_to_file(stiffness_matrix, n)
-    
-END PROGRAM MAIN
+    INTEGER :: choice
+
+    ! Interactive choice
+    PRINT *, "Select an option:"
+    PRINT *, "1 - Process Loop"
+    PRINT *, "2 - Convert Data Types"
+    PRINT *, "3 - "
+    PRINT *, "Enter choice:"
+    READ *, choice
+
+    SELECT CASE (choice)
+    CASE (1)
+        ! Label_Loop
+        CALL PROCESSLOOP_GOTO 
+        WRITE(*,*) 'Loop completed.'
+        CALL PROCESSLOOP_GOTO 
+        WRITE(*,*) 'Loop completed.'
+    CASE (2)
+        ! Data_Type_Convert
+        CALL CONVERT_AND_DISPLAY
+
+        END SELECT
+
+END PROGRAM Main

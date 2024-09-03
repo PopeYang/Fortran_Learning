@@ -1,35 +1,35 @@
-module LabelLoopModule_Goto
-    implicit none
+MODULE LABELLOOPMODULE_GOTO
+    IMPLICIT NONE
     
-contains
-    subroutine processLoop
-        integer :: i
+CONTAINS
+    SUBROUTINE PROCESSLOOP_GOTO
+        INTEGER :: I
 
         ! 使用带标签的DO循环遍历数字
-        do 200 i = 1, 50
-            if (mod(i, 10) == 0) then
-                goto 300
-            endif
+        DO 200 I = 1, 50
+            IF (MOD(I, 10) == 0) THEN
+                GOTO 300
+            ENDIF
     
-            if (mod(i, 5) == 0) then
-                goto 210
-            endif
+            IF (MOD(I, 5) == 0) THEN
+                GOTO 210
+            ENDIF
     
-            write(*,*) 'Value of i: ', i
-            goto 200
+            WRITE(*,*) 'VALUE OF I: ', I
+            GOTO 200
     
-    210     continue
-            write(*,*) 'i is a multiple of 5: ', i
-            goto 200
+    210     CONTINUE
+            WRITE(*,*) 'I IS A MULTIPLE OF 5: ', I
+            GOTO 200
     
-    300     continue
-            write(*,*) 'i is a multiple of 10: ', i
+    300     CONTINUE
+            WRITE(*,*) 'I IS A MULTIPLE OF 10: ', I
     
-            ! 200 continue是循环的逻辑结构的一部分
+            ! 200 CONTINUE是循环的逻辑结构的一部分
             ! 表示循环的开始
             ! 控制流会根据循环条件在这里继续/结束循环
-    200     continue  
+    200     CONTINUE  
         
-    end subroutine processLoop
+    END SUBROUTINE PROCESSLOOP_GOTO
     
-end module LabelLoopModule_Goto
+END MODULE LABELLOOPMODULE_GOTO
