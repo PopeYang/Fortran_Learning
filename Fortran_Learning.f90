@@ -38,7 +38,7 @@ PROGRAM Main
 
         ! Calculate total size and allocate ABX
         total_size = SUM(LD_BX)
-        !!! HOW TO DECLARE a VARIABLE BANDWIDTH ARRAY
+        
         ALLOCATE(ABX(total_size))
 
         ! Initialize ABX
