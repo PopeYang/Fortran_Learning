@@ -22,33 +22,35 @@ SUBROUTINE PRINT_MATRIX(ND, LD_BX, ABX)
 END SUBROUTINE PRINT_MATRIX
     
 SUBROUTINE PRINT_SYMMETRIC_MATRIX(ND, LD_BX, ABX)
+
     IMPLICIT NONE
     INTEGER, INTENT(IN) :: ND
-    INTEGER, DIMENSION(:), INTENT(IN) :: LD_BX
-    REAL*8, DIMENSION(:), INTENT(IN) :: ABX(SUM(LD_BX))
+    REAL*8, INTENT(IN) :: ABX(:)
+    INTEGER, INTENT(IN) :: LD_BX(:)
+    INTEGER :: i, j, idx
+    REAL*8 :: FULL_MATRIX(ND, ND)
     
-    INTEGER :: i, j, index, sym_index
+    ! Initialize full matrix to zero
+    FULL_MATRIX = 0.0
     
-    WRITE(*, *) "Symmetric matrix:"
-    
-    ! Print the symmetric matrix
+    ! Fill lower triangle based on variable bandwidth
     DO i = 1, ND
-        index = SUM(LD_BX(1:i-1)) + 1  ! Start index for this row in ABX
-        
-        DO j = 1, ND
-            IF (j <= i) THEN
-                ! Print element from ABX (upper triangular part including diagonal)
-                WRITE(*, '(F8.1)', advance='no') ABX(index)
-                index = index + 1
-            ELSE
-                ! Print element from the corresponding lower triangular part
-                sym_index = SUM(LD_BX(1:j-1)) + i  ! Adjusted for the symmetry
-                WRITE(*, '(F8.1)', advance='no') ABX(sym_index)
-            END IF
+        DO j = 1, i
+            idx = LD_BX(i) - i + j
+            FULL_MATRIX(i, j) = ABX(idx)
+            IF (i /= j) FULL_MATRIX(j, i) = ABX(idx)  ! Symmetric for upper triangle
         END DO
-        
-        WRITE(*,*)  ! New line after each row
     END DO
+    
+    ! Print the full matrix
+    PRINT *, "Full Matrix:"
+    DO i = 1, ND
+        DO j = 1, ND
+            WRITE(*, '(F8.3)', ADVANCE='NO') FULL_MATRIX(i, j)
+        END DO
+        PRINT *
+    END DO
+
 END SUBROUTINE PRINT_SYMMETRIC_MATRIX
 
 

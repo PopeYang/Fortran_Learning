@@ -18,7 +18,7 @@ PROGRAM Main
     PRINT *, "Select an option:"
     PRINT *, "1 - Process Loop"
     PRINT *, "2 - Convert Data Types"
-    PRINT *, "3 - "
+    PRINT *, "3 - Print VBW Matrix"
     PRINT *, "Enter choice:"
     READ *, choice
 
